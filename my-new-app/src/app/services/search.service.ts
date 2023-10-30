@@ -7,17 +7,18 @@ import { VideoItem, VideoListResponse} from '../header/search/search.component'
 export class DataTransferService {
   private searchDataSubject: BehaviorSubject<VideoItem[]> = new BehaviorSubject<VideoItem[]>([]);
 
-
-
   searchData$: Observable<VideoItem[]> = this.searchDataSubject.asObservable();
+
   updateSearchData(data: VideoItem[]): void {
-    console.log("udpate",data)
+    console.log("update", data);
     this.searchDataSubject.next(data);
+    // this.searchDataSubject.complete()
   }
 
-
+  completeUpdate(): void {
+    this.searchDataSubject.complete(); // Закрыть Subject после всех обновлений
+  }
 }
-
 export class ComponentService {
   shouldShowComponent: boolean = false;
 

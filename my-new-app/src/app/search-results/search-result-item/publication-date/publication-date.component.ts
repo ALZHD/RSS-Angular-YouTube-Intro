@@ -7,11 +7,11 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./publication-date.component.scss']
 })
 export class PublicationDateComponent {
-  formattedDate: string = ''; // Assign an initial value
+  formattedDate: string = '';
 
   constructor(private datePipe: DatePipe) { }
 
-  // Input property to receive the publishedAt date
+ 
   @Input() publishedAt: any;
 
   ngOnChanges() {

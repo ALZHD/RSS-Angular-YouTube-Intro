@@ -1,4 +1,4 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-video-title',
@@ -6,8 +6,11 @@ import { Component,Input, OnInit } from '@angular/core';
   styleUrls: ['./video-title.component.scss']
 })
 export class VideoTitleComponent implements OnInit {
-  @Input() title: any
+  @Input() title: string; // Определяем title как строку
+  constructor() {
+    this.title = ''; // Присвоение значения в конструкторе
+  }
   ngOnInit() {
     console.log('Полученный заголовок (title):', this.title);
+  }
 }
-} 
