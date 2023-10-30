@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+import { VideoItem, VideoListResponse} from '../header/search/search.component'
+
 @Injectable()
 export class DataTransferService {
-  private searchDataSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  private searchDataSubject: BehaviorSubject<VideoItem[]> = new BehaviorSubject<VideoItem[]>([]);
 
 
 
-  searchData$: Observable<any[]> = this.searchDataSubject.asObservable();
-  updateSearchData(data: any[]): void {
+  searchData$: Observable<VideoItem[]> = this.searchDataSubject.asObservable();
+  updateSearchData(data: VideoItem[]): void {
     console.log("udpate",data)
     this.searchDataSubject.next(data);
   }

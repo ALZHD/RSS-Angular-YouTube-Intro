@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DataTransferService } from '../services/search.service';
+import { VideoItem } from '../header/search/search.component';
 
 @Component({
   selector: 'app-search-results',
@@ -7,7 +8,7 @@ import { DataTransferService } from '../services/search.service';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent {
-  searchData: any[] = [];
+  searchData: VideoItem[] = [];
   constructor(private dataTransferService: DataTransferService) { }
   ngOnInit(): void {
     this.dataTransferService.searchData$.subscribe(data => {

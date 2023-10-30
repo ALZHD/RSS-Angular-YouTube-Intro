@@ -18,7 +18,7 @@ export class SettingsComponent {
       console.log("recieved1", data)
       this.searchData = data;
       if (this.searchData.length > 0) {
-        this.componentService.toggleComponentVisibility()
+this.componentService.toggleComponentVisibility()
       }
     });
     // Другая логика обработки нажатия кнопки

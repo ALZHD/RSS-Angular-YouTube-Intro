@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { VideoItem } from 'src/app/header/search/search.component';
 
 @Component({
   selector: 'app-search-result-item',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./search-result-item.component.scss']
 })
 export class SearchResultItemComponent implements OnInit {
-  @Input() data: any;
+  @Input() data: VideoItem = {} as VideoItem;
   ngOnInit() {
     console.log('Полученный заголовок (data):', this.data);
 }

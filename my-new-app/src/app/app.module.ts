@@ -24,6 +24,8 @@ import { SearchComponent } from './header/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentService, DataTransferService } from './services/search.service';
+import { PublicationDateComponent } from './search-results/search-result-item/publication-date/publication-date.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { ComponentService, DataTransferService } from './services/search.service
     DislikesCountComponent,
     CommentsCountComponent,
     VideoTitleComponent,
-    MoreButtonComponent
+    MoreButtonComponent,
+    PublicationDateComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ import { ComponentService, DataTransferService } from './services/search.service
     HttpClientModule,
   ],
 
-  providers: [DataTransferService, ComponentService],
+  providers: [DataTransferService, ComponentService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

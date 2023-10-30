@@ -2,6 +2,60 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import   { DataTransferService} from  'src/app/services/search.service'
 
+interface Thumbnail {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface Snippet {
+  publishedAt: string;
+  channelTitle: string;
+  title: string;
+  description: string;
+  thumbnails: {
+    default: Thumbnail;
+    medium: Thumbnail;
+    high: Thumbnail;
+    standard: Thumbnail;
+    maxres: Thumbnail;
+  };
+  tags: string[];
+  categoryId: string;
+  liveBroadcastContent: string;
+  localized: {
+    title: string;
+    description: string;
+  };
+  defaultAudioLanguage: string;
+}
+
+export interface VideoItem {
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: Snippet;
+  statistics: {
+    viewCount: string;
+    likeCount: string;
+    dislikeCount: string;
+    favoriteCount: string;
+    commentCount: string;
+  };
+}
+
+export interface VideoListResponse {
+  TODO: string;
+  kind: string;
+  etag: string;
+  pageInfo: {
+    totalResults: number;
+    resultsPerPage: number;
+  };
+  items: VideoItem[];
+}
+
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -9,9 +63,9 @@ import   { DataTransferService} from  'src/app/services/search.service'
 })
 export class SearchComponent {
   searchTerm: string = '';
-  jsonData: any;
+  jsonData: VideoListResponse | undefined;
 
-  searchResults: any[] = [];
+  searchResults: VideoItem[] = [];
 
 
   constructor(private dataTransferService: DataTransferService, private http: HttpClient) { }
