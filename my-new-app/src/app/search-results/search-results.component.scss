@@ -1,0 +1,10 @@
+.search-results-block {
+    display: flex;
+    width: 1200px;
+    height: 1100px;
+    flex-wrap: wrap;
+}
+
+.search-results-block > * {
+    flex: 0 0 25%; /* Ширина 25% для каждого элемента */
+  }

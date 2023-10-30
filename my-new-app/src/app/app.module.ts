@@ -23,7 +23,7 @@ import { MoreButtonComponent } from './search-results/search-result-item/more-bu
 import { SearchComponent } from './header/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DataTransferService } from './services/search.service';
+import { ComponentService, DataTransferService } from './services/search.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { DataTransferService } from './services/search.service';
     HttpClientModule,
   ],
 
-  providers: [DataTransferService],
+  providers: [DataTransferService, ComponentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

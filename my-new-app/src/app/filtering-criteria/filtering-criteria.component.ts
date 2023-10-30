@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ComponentService } from '../services/search.service';
 
 @Component({
   selector: 'app-filtering-criteria',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./filtering-criteria.component.scss']
 })
 export class FilteringCriteriaComponent {
+  constructor(public componentService: ComponentService) { }
 
 }
