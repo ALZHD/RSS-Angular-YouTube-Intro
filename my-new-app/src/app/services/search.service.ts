@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
 
 import { VideoItem, VideoListResponse} from '../header/search/search.component'
 
@@ -7,7 +7,7 @@ import { VideoItem, VideoListResponse} from '../header/search/search.component'
 export class DataTransferService {
   private searchDataSubject: BehaviorSubject<VideoItem[]> = new BehaviorSubject<VideoItem[]>([]);
 
-  searchData$: Observable<VideoItem[]> = this.searchDataSubject.asObservable();
+  searchData$: Observable<VideoItem[]> = this.searchDataSubject.asObservable().pipe(shareReplay());
 
   updateSearchData(data: VideoItem[]): void {
     console.log("update", data);

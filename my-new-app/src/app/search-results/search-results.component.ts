@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DataTransferService } from '../services/search.service';
 import { VideoItem } from '../header/search/search.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search-results',
@@ -8,13 +9,6 @@ import { VideoItem } from '../header/search/search.component';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent {
-  searchData: VideoItem[] = [];
+  searchData$: Observable<VideoItem[]> =  this.dataTransferService.searchData$;
   constructor(private dataTransferService: DataTransferService) { }
-  ngOnInit(): void {
-    this.dataTransferService.searchData$.subscribe(data => {
-      console.log("recieved", data)
-      this.searchData = data;
-    })
-  };
-
 }

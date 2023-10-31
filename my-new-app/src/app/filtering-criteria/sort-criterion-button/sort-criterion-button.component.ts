@@ -12,19 +12,17 @@ export class SortCriterionButtonComponent implements OnDestroy {
   searchData: VideoItem[] | undefined;
   dataSubscription: Subscription | undefined;
 
-  constructor(private dataTransferService: DataTransferService) { }
+  constructor(private dataTransferService: DataTransferService) {
+    this.dataSubscription = dataTransferService.searchData$.subscribe((data) => {
+      console.log("data",data)
+      this.searchData = data
+    })
+  }
 
   handleFilterByDateClick(): void {
-    if (this.dataSubscription && !this.dataSubscription.closed) {
-      this.dataSubscription.unsubscribe(); // Отписываемся, если есть активная подписка
-    }
-
-    this.dataSubscription = this.dataTransferService.searchData$.subscribe(data => {
-      console.log("Received data:", data);
-      const sortedData = this.sortDataByDate(data);
+    if (!this.searchData) return
+      const sortedData = this.sortDataByDate(this.searchData);
       this.updateDataAndPerformActions(sortedData);
-    });
-
     console.log('Button clicked!');
   }
 
